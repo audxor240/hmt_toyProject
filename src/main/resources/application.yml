@@ -1,0 +1,47 @@
+#spring:
+#  datasource:
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://localhost:3306/blog?serverTimezone=Asia/Seoul&useSSL=false
+#    username: root
+#    password: cos1234
+#  jpa:
+#    database: mysql
+#    show-sql: true
+
+server:
+  port: 8000
+  servlet:
+    context-path: /
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
+    
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+      
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/blog?serverTimezone=Asia/Seoul&useSSL=false
+    username: cos
+    password: cos1234
+    
+  jpa:
+    open-in-view: true
+    hibernate:
+      ddl-auto: update	#create : 기존 테이블이 있을 경우 삭제하고 만들어준다(최초에만 셋팅하여 사용), update : 기존에 있는 테이블에 데이터를 추가 또는 업데이트한다
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      use-new-id-generator-mappings: false		# true : JPA의 기본 전략을 따라간다, false : JPA의 기본 전략을 따라가지 않는다.
+    show-sql: true	#true : 콘솔창에 출력O , false : 콘솔창에 출력X
+    properties:
+      hibernate.format_sql: true	# true : 콘솔창에 정렬O, false : 콘솔창에 정렬X 
+
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+      
+ 
