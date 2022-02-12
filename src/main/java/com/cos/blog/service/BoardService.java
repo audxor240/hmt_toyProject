@@ -32,17 +32,44 @@ public class BoardService {
 		
 	}
 	
+	@Transactional(readOnly = true)
 	public Page<Board> 글목록(Pageable pageable){
 		//Page<Board> pagingboard =boardRepository.findAll(pageable);
 		//return pagingboard;
 		return boardRepository.findAll(pageable);
 	}
 	
+	@Transactional(readOnly = true)
 	public Board  글상세보기(int id){
 		return boardRepository.findById(id)
 				.orElseThrow(()->{
 					return	new IllegalArgumentException("글 상세보기 실패 : 아이디를 찾을수 없습니다.");
 				});
+	}
+	
+	@Transactional(readOnly = true)
+	public Board  글수정보기(int id){
+		return boardRepository.findById(id)
+				.orElseThrow(()->{
+					return	new IllegalArgumentException("글 수정 보기 실패 : 아이디를 찾을수 없습니다.");
+				});
+	}
+	
+	@Transactional
+	public void 글삭제(int id) {
+		boardRepository.deleteById(id);
+	}
+	
+	@Transactional
+	public void 글수정하기(int id, Board requestBoard) {
+		Board board = boardRepository.findById(id)
+				.orElseThrow(()->{
+					return	new IllegalArgumentException("글 찾기 실패 : 아이디를 찾을수 없습니다.");
+				});	//영속화 완료 (DB의 데이터를 가져온다)
+		
+		board.setTitle(requestBoard.getTitle());
+		board.setContent(requestBoard.getContent());
+		//해당 함수로 종료시(Service)가 종료될때 트랜잭션이 종료된다. 이떄 더티체킹 - 자동업데이트가 flush
 	}
 /*
 	public Page<Board> 글페이징(Pageable pageable){

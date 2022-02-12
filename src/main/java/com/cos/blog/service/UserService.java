@@ -1,11 +1,15 @@
 package com.cos.blog.service;
 
 
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.cos.blog.model.Board;
 import com.cos.blog.model.RoleType;
 import com.cos.blog.model.User;
 import com.cos.blog.repository.UserRepository;
@@ -28,6 +32,21 @@ public class UserService {
 		user.setRole(RoleType.USER);
 		userRepository.save(user);
 		
+	}
+	
+	@Transactional
+	public void 회원정보수정(int id, User requestUser) {
+		User user = userRepository.findById(id)
+				.orElseThrow(()->{
+					return	new IllegalArgumentException("회원 정보 찾기 실패 : 아이디를 찾을수 없습니다.");
+				});	//영속화 완료 (DB의 데이터를 가져온다)
+		if(requestUser.getPassword() != "") {
+			String rawPassword = requestUser.getPassword();	//원문 패스워드
+			String encPassword = encoder.encode(rawPassword);	//해쉬
+			user.setPassword(encPassword);
+		}
+		user.setEmail(requestUser.getEmail());
+	
 	}
 	
 }
