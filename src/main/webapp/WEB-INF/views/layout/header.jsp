@@ -33,7 +33,8 @@
 				</c:when>
 				<c:otherwise>
 					<ul class="navbar-nav">
-						<li class="nav-item"><a class="nav-link" href="/board/saveForm">글쓰기</a></li>
+						<li class="nav-item"><a class="nav-link" href="/cook/mainForm">쿠킹</a></li>
+						<li class="nav-item"><a class="nav-link" href="/board/mainForm">게시판</a></li>
 						<li class="nav-item"><a class="nav-link" href="/user/userDetailForm">회원정보</a></li>
 						<li class="nav-item"><a class="nav-link" href="/logout">로그아웃</a></li>
 					</ul>

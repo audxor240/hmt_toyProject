@@ -36,7 +36,7 @@ spring:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
       use-new-id-generator-mappings: false		# true : JPA의 기본 전략을 따라간다, false : JPA의 기본 전략을 따라가지 않는다.
-    show-sql: false	#true : 콘솔창에 출력O , false : 콘솔창에 출력X
+    show-sql: true	#true : 콘솔창에 출력O , false : 콘솔창에 출력X
     properties:
       hibernate.format_sql: true	# true : 콘솔창에 정렬O, false : 콘솔창에 정렬X 
 
@@ -44,4 +44,5 @@ spring:
     serialization:
       fail-on-empty-beans: false
       
- 
+cos:
+  key: cos1234

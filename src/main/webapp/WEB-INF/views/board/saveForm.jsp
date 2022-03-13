@@ -12,6 +12,7 @@
 		</div>
 	</form>
 	<button id="btn-save" class="btn btn-primary">글 등록</button>
+	<a href="javascript:window.history.back();" class="btn btn-primary">취소</A>
 </div>
 <script>
 	$('.summernote').summernote({

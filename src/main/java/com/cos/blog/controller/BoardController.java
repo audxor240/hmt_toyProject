@@ -46,4 +46,10 @@ public class BoardController {
 		return "board/saveForm";
 	}
 	
+	@GetMapping("/board/mainForm")
+	public String mainForm(Model model,@PageableDefault(size = 2, sort="id", direction = Sort.Direction.DESC) Pageable pageable) {
+		model.addAttribute("boards",boardService.글목록(pageable));
+		return "/board/mainForm";
+	}
+	
 }

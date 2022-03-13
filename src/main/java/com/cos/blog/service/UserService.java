@@ -34,18 +34,27 @@ public class UserService {
 		
 	}
 	
+	@Transactional(readOnly = true)
+	public User 회원찾기(String username) {
+		User user = userRepository.findByUsername(username).orElseGet(()->{
+			return new User();	//빈 객체 전달
+		});
+		return user;
+	}
+	
 	@Transactional
 	public void 회원정보수정(int id, User requestUser) {
 		User user = userRepository.findById(id)
 				.orElseThrow(()->{
 					return	new IllegalArgumentException("회원 정보 찾기 실패 : 아이디를 찾을수 없습니다.");
 				});	//영속화 완료 (DB의 데이터를 가져온다)
-		if(requestUser.getPassword() != "") {
+		if(requestUser.getOauth() == null || requestUser.getOauth().equals("")) {
 			String rawPassword = requestUser.getPassword();	//원문 패스워드
 			String encPassword = encoder.encode(rawPassword);	//해쉬
 			user.setPassword(encPassword);
+			user.setEmail(requestUser.getEmail());
 		}
-		user.setEmail(requestUser.getEmail());
+		
 	
 	}
 	
