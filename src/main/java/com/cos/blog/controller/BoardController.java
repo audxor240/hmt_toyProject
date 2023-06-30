@@ -23,6 +23,7 @@ public class BoardController {
 	public String index(Model model,@PageableDefault(size = 2, sort="id", direction = Sort.Direction.DESC) Pageable pageable) {
 		model.addAttribute("boards",boardService.글목록(pageable));		//모델의 정보를 index페이지로 들고 이동한다.
 		//model.addAttribute("boardsPage",boardService.글페이징(pageable));
+		//머지 테스트
 		return "index";	//viewResolver 작동!!
 	}
 	
