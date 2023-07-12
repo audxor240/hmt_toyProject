@@ -6,5 +6,6 @@
 	<img height="600px;"  src="/image/KakaoTalk_20220220_121931614.jpg">
 	<br>
 	자동 배포 됨??
+	<br>master머지 2차
 </div>
 <%@ include file="layout/footer.jsp"%>
