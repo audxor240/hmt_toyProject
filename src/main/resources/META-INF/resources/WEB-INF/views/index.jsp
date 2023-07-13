@@ -5,5 +5,6 @@
 <div style="text-align: center">
 	<img height="600px;"  src="/image/KakaoTalk_20220220_121931614.jpg">
 	<br>여기네!!!!!!!!!!!!!!
+	<br>테스트14
 </div>
 <%@ include file="layout/footer.jsp"%>
