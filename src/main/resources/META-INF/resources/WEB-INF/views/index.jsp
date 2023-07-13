@@ -4,5 +4,6 @@
 <%@ include file="layout/header.jsp"%>
 <div style="text-align: center">
 	<img height="600px;"  src="/image/KakaoTalk_20220220_121931614.jpg">
+	<br>여기네!!!!!!!!!!!!!!
 </div>
 <%@ include file="layout/footer.jsp"%>
