@@ -10,5 +10,6 @@
 	<br>master머지 3차
 	<br>master머지 4차
 	<br>master머지 5차
+	<br>master머지 6차
 </div>
 <%@ include file="layout/footer.jsp"%>
